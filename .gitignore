@@ -1,33 +1,38 @@
-# Byte-compiled / optimized / DLL files
+# Ignore Python bytecode
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environment
+# Ignore virtual environments
 venv/
 .env/
 .venv/
 ENV/
 
-# macOS specific
-.DS_Store
-
-# VSCode
-.vscode/
-
-# Pytest cache
+# Ignore test and type checking caches
 .pytest_cache/
-
-# MyPy and other tools
 .mypy_cache/
 .dmypy.json
 .pyre/
+.coverage
+htmlcov/
 
-# Pydantic compiled schema cache
-__pydantic_plugin__/
-
-# SQLite DB (if local)
+# Ignore database files
 *.sqlite3
+*.db
 
-# Logs
+# Ignore logs and temp files
 *.log
+*.tmp
+*.bak
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE settings
+.vscode/
+.idea/
+
+# Ignore compiled Pydantic schemas
+__pydantic_plugin__/
