@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException,Query
 from sqlalchemy.orm import Session
 from typing import List
 
@@ -17,7 +17,9 @@ from app.services.songs import (
     create_album,
     update_album,
     delete_album,
-    get_all_albums
+    get_all_albums,
+    search_songs,
+    search_playlists
 )
 from app.schemas import SongCreate, SongRead, PlaylistCreate, PlaylistRead,AlbumRead
 
@@ -108,6 +110,24 @@ def get_songs_in_playlist_endpoint(playlist_id: int, db: Session = Depends(get_d
     if not playlist:
         raise HTTPException(status_code=404, detail="Playlist not found")
     return playlist.songs
+
+
+@router.get("/songs/search", response_model=list[SongRead])
+def search_songs_endpoint(name: str = Query(..., description="Name of the song to search"), db: Session = Depends(get_db)):
+    songs = search_songs(db=db, name=name)
+    if not songs:
+        raise HTTPException(status_code=404, detail="No songs found")
+    return songs
+
+@router.get("/playlists/search", response_model=list[PlaylistRead])
+def search_playlists_endpoint(name: str = Query(..., description="Name of the playlist to search"), db: Session = Depends(get_db)):
+    playlists = search_playlists(db=db, name=name)
+    if not playlists:
+        raise HTTPException(status_code=404, detail="No playlists found")
+    return playlists
+
+
+
 
 
 

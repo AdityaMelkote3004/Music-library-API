@@ -104,3 +104,9 @@ def delete_album(db: Session, album_id: int):
 def get_all_albums(db: Session):
     return db.query(Album).all()
 
+def search_songs(db: Session, name: str):
+    return db.query(Song).filter(Song.title.ilike(f"%{name}%")).all()
+
+
+def search_playlists(db: Session, name: str):
+    return db.query(Playlist).filter(Playlist.name.ilike(f"%{name}%")).all()

@@ -17,7 +17,7 @@ class Song(Base):
     __tablename__ = 'songs'
     
     id = Column(Integer, primary_key=True)
-    title = Column(String, nullable=False)
+    title = Column(String, nullable=False,index=True)
     artist = Column(String, nullable=False)
     album_id = Column(Integer, ForeignKey('albums.id'))
 
@@ -45,7 +45,7 @@ class Playlist(Base):
     __tablename__ = 'playlists'
     
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    name = Column(String, nullable=False, index=True)
 
     # ✅ Many-to-Many: Playlist ↔ Song
     songs = relationship(

@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+ENV/
+
+# macOS specific
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Pytest cache
+.pytest_cache/
+
+# MyPy and other tools
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Pydantic compiled schema cache
+__pydantic_plugin__/
+
+# SQLite DB (if local)
+*.sqlite3
+
+# Logs
+*.log
